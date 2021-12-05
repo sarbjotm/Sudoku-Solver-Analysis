@@ -46,7 +46,7 @@ def move_valid(puzzle, guess, row, col):
 # This gives wrong inputs of 00 01 02 10 11 12 20 21 22 which does not follow our grid above
 
 
-
+    # We want to check for three rows/cols (as each subsquare has 3 rows/cols) So we will go from col x to x+3 similar with rows
     for r in range(row_start, row_start + 3):
         for c in range(col_start, col_start + 3):
             if puzzle[r][c] == guess:
