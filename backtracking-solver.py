@@ -1,7 +1,8 @@
-from boards import board_1, board_2, board_3, board_4
-from print_board import print_board
+from boards import *
+from print_board import *
+import time
 
-
+# Replace row and col here to change if we solve via cols or rows. If rows in outer  
 def next_empty(puzzle):
     for row in range(0, 9):
         for col in range(0, 9):
@@ -66,40 +67,52 @@ def solve_sudoku(puzzle):
             puzzle[row_pos][col_pos] = guess
             if solve_sudoku(puzzle):
                 return True
-        puzzle[row_pos][col_pos] = '*'
+
+        puzzle[row_pos][col_pos] = '*' #Value reset so we backtrack
+        global backtrack
+        backtrack = backtrack + 1
     
     return False
 
 
 if __name__ == '__main__':
+    global backtrack
+    backtrack = 0
+    start_time = time.time()
     print(f"Board 1:")
     puzzle = board_1()
     print_board(puzzle)
     solve_sudoku(puzzle)
     print("\n \n")
     print_board(puzzle)
-    print("\n \n") 
+    print(f"Backtrack {backtrack} times \n \n") 
     
+
+    backtrack = 0
     print(f"Board 2:")
     puzzle = board_2()
     print_board(puzzle)
     solve_sudoku(puzzle)
     print("\n \n")
     print_board(puzzle)
-    print("\n \n") 
+    print(f"Backtrack {backtrack} times \n \n") 
 
+    backtrack = 0
     print(f"Board 3:")
     puzzle = board_3()
     print_board(puzzle)
     solve_sudoku(puzzle)
     print("\n \n")
     print_board(puzzle)
-    print("\n \n") 
+    print(f"Backtrack {backtrack} times \n \n") 
 
+    backtrack = 0
     print(f"Board 4:")
     puzzle = board_4()
     print_board(puzzle)
     solve_sudoku(puzzle)
     print("\n \n")
     print_board(puzzle)
-    print("\n \n") 
+    print(f"Backtrack {backtrack} times \n \n") 
+
+    print(f"Total time taken: {time.time() - start_time}")
