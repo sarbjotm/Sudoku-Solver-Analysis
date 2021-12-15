@@ -207,7 +207,7 @@ def select_possible_candidate(puzzle, row_pos, col_pos, candidates, candidates_d
     return False
 
 
-def human_solver(puzzle, row_pos, col_pos, guess):
+def valid_guess(puzzle, row_pos, col_pos, guess):
     row_result = single_position_row(puzzle, row_pos, col_pos, guess)
     col_result = single_position_col(puzzle, row_pos, col_pos, guess)
     group_result = single_position_group(puzzle, row_pos, col_pos, guess)
@@ -245,7 +245,7 @@ def human_solve_sudoku(puzzle):
                 row_pos, col_pos = next_empty(puzzle, no_solution)
 
         for guess in range(1, 10):
-            if human_solver(puzzle, row_pos, col_pos, guess):
+            if valid_guess(puzzle, row_pos, col_pos, guess):
                 candidates.append(guess)
 
         # print(f"row_pos: {row_pos}, col_pos: {col_pos}")
@@ -261,7 +261,7 @@ def human_solve_sudoku(puzzle):
             if not (select_possible_candidate(puzzle, row_pos, col_pos, candidates, candidates_dict)):
             
                 # no current solution for position
-                no_solution.append((row_pos, col_pos))   
+                no_solution.append((row_pos, col_pos))
 
 if __name__ == '__main__':
     start_time = time.time()
