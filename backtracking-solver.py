@@ -69,50 +69,21 @@ def solve_sudoku(puzzle):
                 return True
 
         puzzle[row_pos][col_pos] = '*' #Value reset so we backtrack
-        global backtrack
-        backtrack = backtrack + 1
+
     
     return False
 
 
 if __name__ == '__main__':
-    global backtrack
-    backtrack = 0
+
     start_time = time.time()
-    print(f"Board 1:")
-    puzzle = board_1()
+    print(f"Board 0:")
+    puzzle = board_5()
     print_board(puzzle)
     solve_sudoku(puzzle)
     print("\n \n")
     print_board(puzzle)
-    print(f"Backtrack {backtrack} times \n \n") 
+
     
-
-    backtrack = 0
-    print(f"Board 2:")
-    puzzle = board_2()
-    print_board(puzzle)
-    solve_sudoku(puzzle)
-    print("\n \n")
-    print_board(puzzle)
-    print(f"Backtrack {backtrack} times \n \n") 
-
-    backtrack = 0
-    print(f"Board 3:")
-    puzzle = board_3()
-    print_board(puzzle)
-    solve_sudoku(puzzle)
-    print("\n \n")
-    print_board(puzzle)
-    print(f"Backtrack {backtrack} times \n \n") 
-
-    backtrack = 0
-    print(f"Board 4:")
-    puzzle = board_4()
-    print_board(puzzle)
-    solve_sudoku(puzzle)
-    print("\n \n")
-    print_board(puzzle)
-    print(f"Backtrack {backtrack} times \n \n") 
 
     print(f"Total time taken: {time.time() - start_time}")
