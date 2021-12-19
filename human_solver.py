@@ -266,7 +266,7 @@ def human_solve_sudoku(puzzle):
 if __name__ == '__main__':
     start_time = time.time()
     print(f"Board 0:")
-    puzzle = board_11()
+    puzzle = board_25()
     print_board(puzzle)
     human_solve_sudoku(puzzle)
     print_board(puzzle)
